@@ -14,6 +14,10 @@ typedef struct stack {
 node *create_node(int data)
 {
 	node *new_node = malloc(sizeof(node));
+	if (new_node == NULL) {
+		fprintf(stderr, "malloc() failed: insufficient memory\n");
+		exit(EXIT_FAILURE);
+	}
 	new_node->next = NULL;
 	new_node->data = data;
 
@@ -23,6 +27,10 @@ node *create_node(int data)
 stack *create_stack(int data)
 {
 	stack *new_stack = malloc(sizeof(new_stack));
+	if (new_stack == NULL) {
+		fprintf(stderr, "malloc() failed: insufficient memory\n");
+		exit(EXIT_FAILURE);
+	}
 	new_stack->head = create_node(data);
 	new_stack->size = 1;
 
